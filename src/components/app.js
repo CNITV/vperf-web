@@ -4,6 +4,7 @@ import { Router } from 'preact-router';
 import Header from './header';
 import Home from '../routes/home';
 import Profile from '../routes/profile';
+import Teams from '../routes/teams';
 import { Container } from 'semantic-ui-react';
 // import Home from 'async!../routes/home';
 // import Profile from 'async!../routes/profile';
@@ -25,9 +26,10 @@ export default class App extends Component {
 				<Container>
 					<Router onChange={this.handleRoute}>
 						<Home path="/" />
+						<Teams path="/teams" />
 						<Profile path="/profile/" user="me" />
 						<Profile path="/profile/:user" />
-				</Router>
+					</Router>
 				</Container>
 			</div>
 		);

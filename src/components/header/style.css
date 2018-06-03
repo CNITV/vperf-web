@@ -5,6 +5,7 @@
 	width: 100%;
 	height: 56px;
 	background: #333;
+	box-shadow: 0 0 8px #333;
 	padding: 0;
 	z-index: 50;
 }
