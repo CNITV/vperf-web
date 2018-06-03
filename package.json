@@ -30,6 +30,7 @@
     "preact": "^8.2.6",
     "preact-compat": "^3.17.0",
     "preact-router": "^2.5.7",
+    "react-full-screen": "^0.2.2",
     "semantic-ui-css": "^2.3.1",
     "semantic-ui-react": "^0.80.2"
   },

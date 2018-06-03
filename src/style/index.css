@@ -21,6 +21,29 @@ body::before {
 	background: #333;
 }
 
+.another-container {
+	position: relative;
+}
+
+.fullscreen-enabled .segment {
+	animation: autoscroll 15s linear infinite alternate;
+}
+
+@keyframes autoscroll {
+	0% {
+		transform: translateY(0%);
+	}
+	25% {
+		transform: translateY(0%);
+	}
+	75% {
+		transform: translateY(calc(100vh - 100%));
+	}
+	100% {
+		transform: translateY(calc(100vh - 100%));
+	}
+}
+
 * {
 	box-sizing: border-box;
 }
