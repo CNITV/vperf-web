@@ -5,6 +5,7 @@ import Header from './header';
 import Home from '../routes/home';
 import Profile from '../routes/profile';
 import Teams from '../routes/teams';
+import Admin from '../routes/admin';
 import { Container } from 'semantic-ui-react';
 // import Home from 'async!../routes/home';
 // import Profile from 'async!../routes/profile';
@@ -27,8 +28,7 @@ export default class App extends Component {
 					<Router onChange={this.handleRoute}>
 						<Home path="/" />
 						<Teams path="/teams" />
-						<Profile path="/profile/" user="me" />
-						<Profile path="/profile/:user" />
+						<Admin path="/admin"/>
 					</Router>
 				</Container>
 			</div>

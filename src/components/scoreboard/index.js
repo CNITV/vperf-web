@@ -3,7 +3,7 @@ import style from './style';
 import { Progress, Table } from 'semantic-ui-react'
 
 const Scoreboard = props => (
-	<Table compact='very' basic='very'><Table.Body>{props.board.map(e => <ScoreboardItem element={e} total={Math.max.apply(Math, props.board.map(e => e.score))} />)}</Table.Body></Table>
+	<Table compact='very' basic='very' striped><Table.Body>{props.board.map(e => <ScoreboardItem element={e} total={Math.max.apply(Math, props.board.map(e => e.score))} />)}</Table.Body></Table>
 );
 
 const ScoreboardItem = props => (
