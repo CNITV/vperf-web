@@ -26,6 +26,7 @@ body::before {
 }
 
 .fullscreen-enabled .segment {
+	min-height: 100vh;
 	animation: autoscroll 15s linear infinite alternate;
 }
 

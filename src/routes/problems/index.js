@@ -4,7 +4,7 @@ import { Header, Segment, Container, Icon, Divider } from 'semantic-ui-react';
 import Scoreboard from '../../components/scoreboard';
 import Fullscreen from 'react-full-screen';
 
-export default class Teams extends Component {
+export default class Problems extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -27,11 +27,11 @@ export default class Teams extends Component {
 				onChange={f => this.setState({fullscreen: f})}
 			>
 				<div class='another-container'>
-					<Segment raised padded loading={this.props.status.teams.length == 0}>
+					<Segment raised padded loading={this.props.status.problems.length == 0}>
 						<div style={{float: 'right', padding: '0.25em'}}><Icon onClick={this.goFull} link name='expand' /></div>
-						<Header as='h1' floated='left'>Echipe</Header>
+						<Header as='h1' floated='left'>Probleme</Header>
 						<Divider section clearing />
-						<Scoreboard board={this.props.status.teams} />
+						<Scoreboard board={this.props.status.problems} />
 					</Segment>
 				</div>
 			</Fullscreen>

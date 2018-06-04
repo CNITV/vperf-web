@@ -1,22 +1,39 @@
 import { h, Component } from 'preact';
 //import style from './style';
-import { Button, Segment, Container, Header, Label, Divider, List, Form } from 'semantic-ui-react';
+import { Button, Segment, Container, Header, Label, Divider, List, Form, Message } from 'semantic-ui-react';
 import { API_URL } from '../../config.js';
 
 export default class Admin extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			password: ""
+			password: "",
+			authenticated: false,
+			error: null
 		};
+		this.headers = new Headers();
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	componentWillMount() {
 		this.setState({password: sessionStorage.getItem('password')});
 	}
 
+	handleChange = (e, { name, value }) => this.setState({ [name]: value });
+
 	handleSubmit() {
-		console.log('a');
+		console.log(this.state.password);
+		this.headers.set('Authorization', 'Basic ' + btoa("admin:" + this.state.password));
+		fetch(API_URL + '/admin/ok', { headers: this.headers })
+			.then(resp => {
+				if (resp.status == 200) {
+					sessionStorage.setItem('password', this.state.password);
+					this.setState({authenticated: true, error: null});
+				} else if (resp.status == 401) {
+					console.error("Invalid password!");
+					this.setState({error: "Parola invalida"});
+				}
+			});
 	}
 
 	handleStart() {}
@@ -24,17 +41,16 @@ export default class Admin extends Component {
 	handleStop() {}
 
 	render() {
-		if (this.state.password) {
+		if (this.state.authenticated) {
 			return (
 				<div>
-
-					<Segment.Group raised compact>
+					<Segment.Group raised>
 						<Segment padded>
 							<Header as='h2'>Status concurs <StatusLabel status={this.props.status}/></Header>
 						</Segment>
 						<Segment padded>
 							<List>
-								<List.Item><strong>Timp total: </strong>{this.props.status.total_time || 0} minute</List.Item>
+								<List.Item><strong>Timp total: </strong>{this.props.status.total_time || 0} secunde</List.Item>
 								<List.Item><strong>Echipe inscrise: </strong>{this.props.status.teams.length}</List.Item>
 								<List.Item><strong>Numar probleme: </strong>{this.props.status.problems.length}</List.Item>
 							</List>
@@ -57,9 +73,10 @@ export default class Admin extends Component {
 							<Header as='h2'>Autentificare</Header>
 						</Segment>
 						<Segment padded>
+							{this.state.error ? <Message error header={this.state.error} /> : {}}
 							<Form onSubmit={this.handleSubmit}>
 								<Form.Group fluid>
-									<Form.Input placeholder='Parola' name='password' />
+									<Form.Input type='password' placeholder='Parola' value={this.state.password} onChange={this.handleChange} name='password' />
 									<Form.Button positive content='Trimite' />
 								</Form.Group>
 							</Form>

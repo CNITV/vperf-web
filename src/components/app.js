@@ -3,9 +3,9 @@ import { Router } from 'preact-router';
 
 import Header from './header';
 import Home from '../routes/home';
-import Profile from '../routes/profile';
 import Teams from '../routes/teams';
 import Admin from '../routes/admin';
+import Problems from '../routes/problems';
 import { Container } from 'semantic-ui-react';
 
 import { API_URL } from '../config.js';
@@ -50,6 +50,7 @@ export default class App extends Component {
 						<Home path="/" status={this.state.status} />
 						<Teams path="/teams" status={this.state.status} />
 						<Admin path="/admin" status={this.state.status} />
+						<Problems path="/problems" status={this.state.status} />
 					</Router>
 				</Container>
 			</div>

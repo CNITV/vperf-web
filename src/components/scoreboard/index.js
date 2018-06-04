@@ -8,7 +8,7 @@ const Scoreboard = props => (
 
 const ScoreboardItem = props => (
 	<Table.Row>
-		<Table.Cell collapsing textAlign='right'><strong>{props.element.name}</strong></Table.Cell>
+		<Table.Cell collapsing textAlign='right'><strong>{props.element.name ? props.element.name : "Problema " + (props.element.id + 1)}</strong></Table.Cell>
 		<Table.Cell><Progress autoSuccess value={props.element.score} total={props.total} size='small' className={style.sb} /></Table.Cell>
 		<Table.Cell collapsing><strong>{props.element.score}</strong></Table.Cell>
 	</Table.Row>
