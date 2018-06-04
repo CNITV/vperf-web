@@ -36,9 +36,19 @@ export default class Admin extends Component {
 			});
 	}
 
-	handleStart() {}
+	handleStart = () => {
+		fetch(API_URL + '/admin/start', {
+			method: 'POST',
+			headers: this.headers
+		});
+	}
 
-	handleStop() {}
+	handleStop = () => {
+		fetch(API_URL + '/admin/stop', {
+			method: 'POST',
+			headers: this.headers
+		});
+	}
 
 	render() {
 		if (this.state.authenticated) {
@@ -58,8 +68,8 @@ export default class Admin extends Component {
 						<Segment padded>
 							{
 								this.props.status.running
-								? <Button negative content='Opreste' icon='stop' labelPosition='left' />
-								: <Button positive content='Porneste' icon='play' labelPosition='left' />
+								? <Button negative content='Opreste' icon='stop' labelPosition='left' onClick={this.handleStop} />
+								: <Button positive content='Porneste' icon='play' labelPosition='left' onClick={this.handleStart} />
 							}
 						</Segment>
 					</Segment.Group>
