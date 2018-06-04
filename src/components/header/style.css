@@ -22,6 +22,7 @@
 
 .header nav {
 	float: right;
+	padding: 0 8px;
 	font-size: 100%;
 }
 
@@ -29,7 +30,7 @@
 	display: inline-block;
 	height: 56px;
 	line-height: 56px;
-	padding: 0 15px;
+	padding: 0 8px;
 	min-width: 50px;
 	text-align: center;
 	background: rgba(255,255,255,0);
@@ -40,9 +41,19 @@
 
 .header nav a:hover,
 .header nav a:active {
-	background: rgba(0,0,0,0.2);
+	color: white;
 }
 
 .header nav a.active {
-	background: rgba(0,0,0,0.4);
+	font-weight: bold;
+	color: white;
+}
+
+@media screen and (max-width: 572px) {
+	.header {
+		height: 112px;
+	}
+	.header nav {
+		float: left;
+	}
 }
