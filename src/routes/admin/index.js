@@ -74,7 +74,7 @@ export default class Admin extends Component {
 							}
 						</Segment>
 					</Segment.Group>
-					<Grader status={this.props.status} />
+					<Grader status={this.props.status} headers={this.headers} />
 				</div>
 			);
 		} else {

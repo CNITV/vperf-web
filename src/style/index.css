@@ -21,6 +21,10 @@ body::before {
 	background: #333;
 }
 
+.ui.page.modals.transition.visible {
+	display: flex !important;
+}
+
 .another-container {
 	position: relative;
 }
