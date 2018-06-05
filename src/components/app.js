@@ -6,6 +6,7 @@ import Home from '../routes/home';
 import Teams from '../routes/teams';
 import Admin from '../routes/admin';
 import Problems from '../routes/problems';
+import Details from '../routes/details';
 import { Container } from 'semantic-ui-react';
 
 import { API_URL } from '../config.js';
@@ -51,6 +52,7 @@ export default class App extends Component {
 						<Teams path="/teams" status={this.state.status} />
 						<Admin path="/admin" status={this.state.status} />
 						<Problems path="/problems" status={this.state.status} />
+						<Details path="/details" status={this.state.status} />
 					</Router>
 				</Container>
 			</div>
