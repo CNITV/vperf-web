@@ -2,13 +2,8 @@ import { h } from 'preact';
 import style from './style';
 import { Progress, Table } from 'semantic-ui-react'
 
-const sortHandler = (a, b) => {
-	if (a == b && a.special_score != undefined && b.special_score != undefined) return b.special_score - a.special_score;
-	return b.score - a.score;
-};
-
 const Scoreboard = props => (
-	<Table compact='very' basic='very' striped><Table.Body>{props.board.sort(sortHandler).map(e => <ScoreboardItem element={e} total={Math.max.apply(Math, props.board.map(e => e.score))} />)}</Table.Body></Table>
+	<Table compact='very' basic='very' striped><Table.Body>{props.board.map(e => <ScoreboardItem element={e} total={Math.max.apply(Math, props.board.map(e => e.score))} />)}</Table.Body></Table>
 );
 
 const ScoreboardItem = props => (

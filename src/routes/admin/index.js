@@ -1,6 +1,7 @@
 import { h, Component } from 'preact';
 //import style from './style';
 import { Button, Segment, Container, Header, Label, Divider, List, Form, Message } from 'semantic-ui-react';
+import Grader from '../../components/grader';
 import { API_URL } from '../../config.js';
 
 export default class Admin extends Component {
@@ -73,6 +74,7 @@ export default class Admin extends Component {
 							}
 						</Segment>
 					</Segment.Group>
+					<Grader status={this.props.status} />
 				</div>
 			);
 		} else {
