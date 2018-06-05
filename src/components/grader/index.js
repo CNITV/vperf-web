@@ -53,6 +53,7 @@ export default class Grader extends Component {
 	}
 
 	handleSubmitSpecial(e) {
+		console.log(e.target.elements.specialProblem.value - 1);
 		fetch(API_URL + '/admin/team/' + e.target.elements.specialId.value + '/special', {
 			method: 'PUT',
 			body: (e.target.elements.specialProblem.value - 1),
