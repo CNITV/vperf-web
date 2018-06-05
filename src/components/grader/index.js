@@ -31,6 +31,7 @@ export default class Grader extends Component {
 		};
 		this.handleSubmitAdd = this.handleSubmitAdd.bind(this);
 		this.handleSubmitFine = this.handleSubmitFine.bind(this);
+		this.handleSubmitSpecial = this.handleSubmitSpecial.bind(this);
 	}
 
 	handleChange = (e, {value}) => this.setState({query: value});
@@ -44,10 +45,17 @@ export default class Grader extends Component {
 	}
 
 	handleSubmitFine(e) {
-		console.log('aaaaaaaa');
 		fetch(API_URL + '/admin/team/' + e.target.elements.fineId.value + '/fine', {
 			method: 'POST',
 			body: e.target.elements.fineAmount.value,
+			headers: this.props.headers
+		}).then(resp => console.log(resp));
+	}
+
+	handleSubmitSpecial(e) {
+		fetch(API_URL + '/admin/team/' + e.target.elements.specialId.value + '/special', {
+			method: 'PUT',
+			body: (e.target.elements.specialProblem.value - 1),
 			headers: this.props.headers
 		}).then(resp => console.log(resp));
 	}
@@ -71,7 +79,7 @@ export default class Grader extends Component {
 					<div style={{maxHeight: '24em', overflowY: 'scroll'}}>
 						<Table basic='very' selectable>
 							<Table.Body>
-								{(result.length ? result : this.props.status.teams).map(e => <GraderItem element={e} problems={this.props.status.problems} handlers={{handleSubmitAdd: this.handleSubmitAdd, handleSubmitFine: this.handleSubmitFine}} />)}
+								{(result.length ? result : this.props.status.teams).map(e => <GraderItem element={e} problems={this.props.status.problems} handlers={{handleSubmitAdd: this.handleSubmitAdd, handleSubmitFine: this.handleSubmitFine, handleSubmitSpecial: this.handleSubmitSpecial}} />)}
 							</Table.Body>
 						</Table>
 					</div>
@@ -119,6 +127,19 @@ const GraderItem = props => (
 				</Modal.Content>
 			</Modal>
 		</Table.Cell>
-		<Table.Cell collapsing><Icon circular name='dont' /></Table.Cell>
+		<Table.Cell collapsing>
+		<Modal trigger={<Icon circular name='star' />} closeIcon style={inlineStyle.modal}>
+			<Modal.Header>Seteaza problema speciala pentru {props.element.name}</Modal.Header>
+			<Modal.Content>
+				<Form onSubmit={props.handlers.handleSubmitSpecial}>
+					<Form.Input type='hidden' name='specialId' value={props.element.id} />
+					<Form.Group widths='equal'>
+						<Form.Input fluid name='specialProblem' label='Nr. problemei' placeholder='Nr. problemei' />
+					</Form.Group>
+					<Form.Button>Trimite</Form.Button>
+				</Form>
+			</Modal.Content>
+		</Modal>
+		</Table.Cell>
 	</Table.Row>
 );
