@@ -1,22 +1,19 @@
 # vperf-web
 
-## CLI Commands
+`vperf-web` este interfața grafică pentru serverul de scoruri pentru concursul "Performanțe Vianiste", [vperf-server](https://github.com/CNITV/vperf-server), scrisă in JavaScript cu ajutorul librăriei preact.
+
+## Instrucțiuni de build
 
 ``` bash
-# install dependencies
+# instaleaza dependențele
 npm install
 
-# serve with hot reload at localhost:8080
+# pornește un server de development la localhost:8080
 npm run dev
 
-# build for production with minification
+# build pentru production
 npm run build
 
-# test the production build locally
+# pornește un server local cu fișierele de build
 npm run serve
-
-# run tests with jest and preact-render-spy 
-npm run test
 ```
-
-For detailed explanation on how things work, checkout the [CLI Readme](https://github.com/developit/preact-cli/blob/master/README.md).
