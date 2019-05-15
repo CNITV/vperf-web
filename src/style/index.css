@@ -34,6 +34,18 @@ body::before {
 	animation: autoscroll 15s linear infinite alternate;
 }
 
+.logo {
+	display: inline-block;
+	width: 210px !important;
+	margin-right: 16px;
+	margin-top: -8px;
+	vertical-align: middle;
+}
+
+.column h1 {
+	margin-top: 4px !important;
+}
+
 @keyframes autoscroll {
 	0% {
 		transform: translateY(0%);

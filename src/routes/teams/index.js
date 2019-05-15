@@ -43,7 +43,7 @@ export default class Teams extends Component {
 						<Grid columns={3}>
 							<Grid.Column vertical><Header as='h1'>Echipe</Header></Grid.Column>
 							<Grid.Column basic textAlign='center'><Header as='h1' color={this.props.status.running ? 'green' : 'red'}>{this.timeHandler(this.props.status.time || 0)}</Header></Grid.Column>
-							<Grid.Column basic textAlign='right'><Icon onClick={this.goFull} link name='expand' /></Grid.Column>
+							<Grid.Column basic textAlign='right'><img class="logo" src="/assets/logo.png" /><Icon onClick={this.goFull} link name='expand' /></Grid.Column>
 						</Grid>
 						<Divider />
 						<Scoreboard board={this.props.status.teams.sort(this.sortHandler)} />
